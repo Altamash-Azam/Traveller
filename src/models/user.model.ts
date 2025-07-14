@@ -3,7 +3,8 @@ import mongoose ,{Schema} from "mongoose";
 const UserSchema = new Schema({
     authId : {type:String, index:true},
     username: {type:String, unique:true},
-    homeCountry: String,
+    homeCountry: {type: String},
+    bio : String,
     savedItineraries: {
         type: [{
             type: Schema.Types.ObjectId,
