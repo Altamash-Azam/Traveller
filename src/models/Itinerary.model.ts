@@ -14,11 +14,13 @@ const dayItemSchema = new Schema({
 
 const ItinerarySchema = new Schema({
     owner: {type: Schema.Types.ObjectId, ref: "User", index:true},
-    title: String,
+    title: {type:String},
+    destination: String,
+    description: String,
     visibility: {type:String, enum:['public', 'private'], index: true},
     startDate: Date,
     endDate: Date,
     days: {date: Date, items: [dayItemSchema]},
-}, {timestamps: true});
+}, {timestamps: true}).index({title: 'text'});
 
 export default mongoose.models.Itinerary || mongoose.model("Itinerary", ItinerarySchema);
