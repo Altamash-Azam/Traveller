@@ -2,7 +2,7 @@ import mongoose ,{Schema} from "mongoose";
 
 const UserSchema = new Schema({
     email : {type:String, required:true},
-    password: {type:String, required:true},
+    hashedPassword: {type:String, required:true},
     username: {type:String, unique:true},
     homeCountry: {type: String},
     bio : String,

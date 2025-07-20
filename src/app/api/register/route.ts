@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import userModel from "@/models/user.model";
 import bcrypt from "bcryptjs";
 
-export default async function POST(request: NextRequest){
+export async function POST(request: NextRequest){
 
     try {
         await connectDB();
@@ -28,8 +28,8 @@ export default async function POST(request: NextRequest){
             },{status: 409})
         }
 
-        const hashedPassword = bcrypt.hash(password, 12);
-        const newUser = await new userModel({
+        const hashedPassword = await bcrypt.hash(password, 12);
+        const newUser = await userModel.create({
             email,username,hashedPassword
         })
 

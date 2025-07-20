@@ -1,31 +1,25 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
-
-if(!MONGODB_URI){
-    throw new Error("MongoDB URI missing");
+type ConnectionObject = {
+    isConnected?: number;
 }
 
-interface CachedConn{
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-}
+const connection: ConnectionObject = {};
 
-declare global {
-    var mongooseCache: CachedConn;
-}
+export default async function connectDB(): Promise<void> {
+    if(connection.isConnected) {
+        console.log("Already connected to the database");
+        return;
+    }    try{
+        console.log("one   ");
+         const db = await mongoose.connect(process.env.MONGODB_URI as string || "", {
+            dbName: 'traveller'
+         });
+         connection.isConnected = db.connections[0].readyState;
+         console.log("DB Connected Succesfully");
 
-var cached = global.mongooseCache || (global.mongooseCache = { conn: null, promise: null}) ;
-
-export default async function connectDB(){
-    if(cached.conn) return cached.conn;
-    if(!cached.promise){
-        cached.promise = mongoose.connect(MONGODB_URI, {
-            maxPoolSize: 10,
-            serverSelectionTimeoutMS: 5000,
-        });
+    }catch (error){
+        console.log("Database connection failed", error);
+        process.exit(1)
     }
-    cached.conn = await cached.promise;
-    return cached.conn;
-
 }
