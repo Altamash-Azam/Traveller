@@ -62,7 +62,7 @@ export async function PUT(request :NextRequest, {params}:{params:{id:string}}){
         const body = await request.json();
         await connectDB();
 
-        const user = await userModel.findOne({authId: session.user.id});
+        const user = await userModel.findOne({_id: session.user.id});
         if(!user){
             return NextResponse.json({
                 success: false,
@@ -110,7 +110,7 @@ export async function DELETE(request :NextRequest, {params}:{params: {id:string}
     try {
         await connectDB();
 
-        const user = await userModel.findOne({authId: session.user.id});
+        const user = await userModel.findOne({_id: session.user.id});
         if(!user){
             return NextResponse.json({
                 success: false,
