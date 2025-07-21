@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import * as z from "zod"
+import Link from "next/link"
 
 
 const formSchema = z.object({
@@ -44,8 +45,8 @@ export default function App() {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <div className="flex mx-auto h-full">
-      <form className="flex flex-col mx-auto mt-30 gap-3 h-full py-30 px-10 bg-slate-300 justify-center items-center" onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <form className="w-1/2 flex flex-col mx-auto mt-30 gap-3 h-full py-30 px-10 bg-slate-300 justify-center items-center" onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <input className="bg-white px-4 py-2 w-84" placeholder="username" {...register("username", { required: true })} />
         {errors.username && <span>This field is required</span>}
@@ -61,6 +62,7 @@ export default function App() {
 
         <input className="bg-black text-white w-30 py-2 mt-7" type="submit" />
       </form>
+      <div className="flex flex-row items-center justify-center"><span>Already a User?</span><Link href="/sign-in">sign-in</Link></div>
     </div>
   )
 }

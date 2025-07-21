@@ -2,12 +2,23 @@ import connectDB from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import userModel from "@/models/user.model";
 import bcrypt from "bcryptjs";
+import { signUpSchema } from "@/schemas/signupSchema";
 
 export async function POST(request: NextRequest){
 
     try {
         await connectDB();
         const body = await request.json();
+
+        const validation = signUpSchema.safeParse(body);
+
+        if (!validation.success) {
+            return NextResponse.json({
+                success: false,
+                message: "Invalid input",
+            }, { status: 400 });
+        }
+
         const {username, email, password} = body;
 
         if(!username || !password || !email){
