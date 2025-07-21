@@ -3,14 +3,16 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import axios, { AxiosError } from "axios"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
+import * as z from "zod"
 
 
-type Inputs = {
-  email: string
-  username: string
-  password: string
-}
+const formSchema = z.object({
+  email: z.email({message: "please enter a valid email"}),
+  password: z.string().min(6,{message: "please enter a valid email"}),
+  username: z.string().min(2, {message: "username should be at least 2 characters"})
+})
 
+type formData = z.infer<typeof formSchema>;
 
 export default function App() {
   const router = useRouter();
@@ -19,8 +21,8 @@ export default function App() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  } = useForm<formData>()
+  const onSubmit: SubmitHandler<formData> = async (data) => {
     try {
       const response = await axios.post('/api/register', data);
       

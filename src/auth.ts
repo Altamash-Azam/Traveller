@@ -21,13 +21,13 @@ export const {handlers , signIn, signOut, auth} = NextAuth({
 
                 const user = await userModel.findOne({email: credentials.email});
 
-                if(!user || !user.password){
+                if(!user || !user.hashedPassword){
                     return null;
                 }
 
                 const isPasswordCorrect = await bcrypt.compare(
                     credentials.password as string,
-                    user.password
+                    user.hashedPassword
                 )
 
                 if(!isPasswordCorrect){
@@ -41,5 +41,23 @@ export const {handlers , signIn, signOut, auth} = NextAuth({
                 }
             }
         })
-    ]
+    ],
+    callbacks: {
+
+        async jwt({token, user}) {
+            if(user){
+                token.id = user.id as string;
+                token.username = user.username;
+            }
+            return token;
+        },
+
+        async session({session, token}) {
+            if(session.user){
+                session.user.username = token.username;
+                session.user.id = token.id;
+            }
+            return session;
+        }
+    }
 });
