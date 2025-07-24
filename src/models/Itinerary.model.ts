@@ -8,8 +8,8 @@ const dayItemSchema = new Schema({
     cost: {amount:Number, currency:{type: String, default: 'USD'}},
     startTime: Date,
     endTime: Date,
-    images: [String],
-    notes: String
+    // images: [String],
+    // notes: String
 },
 {
     _id:false

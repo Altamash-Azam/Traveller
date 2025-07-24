@@ -1,2 +1,8 @@
 @import "tailwindcss";
 
+@theme {
+  --font-family-mona-sans: var(--font-mona-sans);
+
+  --color-brand-primary: #52a975;
+  --color-brand-secondary: #2c5282;
+}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
+import { auth } from "@/auth";
 import connectDB from "@/lib/mongodb";
 import ItineraryModel from "@/models/Itinerary.model";
 import userModel from "@/models/user.model";
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest){
 
         await connectDB();
 
-        const user = await userModel.findOne({authId: session.user.id});
+        const user = await userModel.findOne({_id: session.user.id});
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         }
