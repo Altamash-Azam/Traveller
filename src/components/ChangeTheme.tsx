@@ -1,11 +1,12 @@
 "use client";
 import { useTheme } from 'next-themes'
+import { Switch } from './ui/Switch';
 
 const ChangeTheme = () => {
     const { theme, setTheme } = useTheme();
   return (
-    <div>
-      <button className='my-50 border-2 p-10 mx-auto border-white' onClick={()=>{setTheme(theme === "light"? "dark": "light")}}>change theme</button>
+    <div className='pt-1'>
+      <Switch className='' onClick={()=>{setTheme(theme === "dark" ? "light" : "dark")}}/>
     </div>
   )
 }
