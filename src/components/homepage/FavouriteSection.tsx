@@ -21,7 +21,7 @@ const TopButton = ({days, nights, color}: {days:string, nights:string, color:str
 
 const FavouriteSection = () => {
   return (
-    <div className='flex flex-col mx-4 lg:mx-20 my-30 items-center'>
+    <div className='flex flex-col mx-4 lg:mx-20 my-30 items-center '>
       <div className='font-medium text-xl text-[#259ada] mb-5'>//OUR FAVOURITES</div>
       <div className='lg:text-5xl text-3xl text-left lg:text-center w-[90%] mx-auto  mb-15'>discover our exception collection of itineraries made by travel enthusiasts around the world</div>
 

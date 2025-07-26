@@ -12,7 +12,7 @@ const ImageOverlay = ({ title, description }: { title: string, description: stri
 const ServicesSection = () => {
   return (
     // Added responsive margins and padding
-    <div className='mx-4 md:mx-20 my-20 flex flex-col'>
+    <div className='mx-4 md:mx-20 my-20 flex flex-col '>
       <div className='font-medium text-xl text-[#259ada] mb-5'>// OUR SERVICES</div>
 
       <div className='text-4xl md:text-6xl mb-6 font-light'>Explore endless options with our services</div>

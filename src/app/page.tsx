@@ -6,6 +6,7 @@ import ServicesSection from "@/components/homepage/ServicesSection";
 import { Poppins } from "next/font/google";
 import ReviewSection from "@/components/homepage/ReviewSection";
 import ContactSection from "@/components/homepage/ContactSection";
+import ChangeTheme from "@/components/ChangeTheme";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,14 +15,17 @@ const poppins = Poppins({
 
 export default function Home() {
   return (
-    <div className={`bg-[#fafafa] ${poppins.className}`}>
-      <HeroSection/>
+    <div className={`bg-[#fafafa] dark:bg-black  ${poppins.className}`}>
+      <div>
+        <HeroSection/>
       <AboutSection/>
       <ServicesSection/>
       <FavouriteSection/>
       <FAQSection/>
       <ReviewSection/>
       <ContactSection/>
+      <ChangeTheme/>
+      </div>
     </div>
   );
 }

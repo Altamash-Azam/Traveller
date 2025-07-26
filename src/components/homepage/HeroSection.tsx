@@ -8,7 +8,7 @@ import { useSession, signOut } from 'next-auth/react';
 const HeroSection = () => {
   const { data: session, status } = useSession();
   return (
-    <div className={` min-w-[95vw] m-3 h-[140vh] rounded-2xl overflow-hidden relative text-white`}>
+    <div className={` min-w-[95vw] m-3 h-[140vh] rounded-2xl overflow-hidden relative  text-white`}>
       <div className="w-full h-full absolute inset-0 overflow-hidden">
         <img className="w-full h-full object-cover" src="assets/homepage1.jpg" alt="" />
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)] "></div>

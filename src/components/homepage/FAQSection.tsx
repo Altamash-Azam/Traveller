@@ -39,7 +39,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ question, answer, isOpen,
         <div onClick={onClick} className="w-full lg:w-[85%] ml-auto rounded-2xl border-gray-200 border-2 py-4 group">
             <button
                 
-                className="w-full flex justify-between items-center text-left text-xl lg:text-2xl font-medium text-gray-800 focus:outline-none"
+                className="w-full flex justify-between items-center text-left text-xl lg:text-2xl font-medium dark:text-white   text-gray-800 focus:outline-none"
             >
                 <span className='p-2 pl-6'>{question}</span>
                 
@@ -47,7 +47,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ question, answer, isOpen,
             <div
                 className={`overflow-hidden pl-6 transition-all duration-600 ease-in-out max-h-0 group-hover:max-h-96 ${isOpen ? '' : ''}`}
             >
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300 ">
                     {answer}
                 </p>
             </div>
@@ -63,7 +63,7 @@ const FAQSection = () => {
     setOpenIndex(openIndex === index ? null : index); // Toggle or close if already open
   };
     return (
-        <div className='mx-4 gap-20 lg:gap-0 lg:mx-20 flex flex-col lg:flex-row mb-30'>
+        <div className='mx-4 gap-20 lg:gap-0 lg:mx-20 flex flex-col lg:flex-row mb-30 '>
             <div className="w-full lg:w-1/2">
                 <div className='font-medium text-xl text-[#259ada] mb-5'>//FAQs</div>
                 <h2 className='text-5xl md:text-6xl font-light mb-6'>Frequently Asked Questions</h2>

@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import userModel from "./models/user.model";
-import connectDB from "./lib/mongodb";
+import userModel from "../models/user.model";
+import connectDB from "../lib/mongodb";
 
 export const {handlers , signIn, signOut, auth} = NextAuth({
     session: {strategy:'jwt'},
