@@ -3,7 +3,7 @@ import React from 'react'
 const ContactSection = () => {
   return (
     <div>
-      <div className='min-w[95vw] h-[90vh] mx-3 text-white bg-transparent my-40 rounded-2xl relative overflow-hidden'>
+      <div className='min-w[95vw] h-[90vh] mx-3 text-white bg-transparent mt-40 mb-20 rounded-2xl relative overflow-hidden'>
         <div className='w-full h-full overflow-hidden absolute inset-0'>
           <img className=' object-cover w-full h-full' src="assets/background.jpg" alt="" />
           <div className="absolute inset-0 bg-[rgba(16,16,17,0.2)] "></div>
