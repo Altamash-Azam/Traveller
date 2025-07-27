@@ -7,6 +7,7 @@ import { Poppins } from "next/font/google";
 import ReviewSection from "@/components/homepage/ReviewSection";
 import ContactSection from "@/components/homepage/ContactSection";
 import ChangeTheme from "@/components/ChangeTheme";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function Home() {
       <FAQSection/>
       <ReviewSection/>
       <ContactSection/>
+      <Footer />
       </div>
     </div>
   );
